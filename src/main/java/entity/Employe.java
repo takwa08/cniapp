@@ -1,12 +1,16 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,8 +40,29 @@ public class Employe  implements Serializable {
 	 private String adresse;
 
 	 private String  ville;
+	 @JoinColumn(name="idGrp")
+	 @ManyToOne
+	Group group;
 	 
 	 
+	
+	public Employe(Long matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
+			String description, String email, int codeP, int numTele, String adresse, String ville, Group group) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.nom_ar = nom_ar;
+		this.prenom_ar = prenom_ar;
+		this.age = age;
+		this.description = description;
+		this.email = email;
+		this.codeP = codeP;
+		this.numTele = numTele;
+		this.adresse = adresse;
+		this.ville = ville;
+	
+	}
 	public Employe(Long matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
 			String description, String email, int codeP, int numTele, String adresse, String ville) {
 		
@@ -128,6 +153,13 @@ public class Employe  implements Serializable {
 	}
 	public Employe() {
 		
+	}
+	
+	public Group getGroup() {
+		return group;
+	}
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 	
 	@Override
