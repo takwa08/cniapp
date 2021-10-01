@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import entity.Employe;
 import service.ServiceEmp;
@@ -39,7 +42,7 @@ return new ResponseEntity<>(Ep,HttpStatus.OK);
 
 @CrossOrigin(origins = "http://localhost:4200")
 @GetMapping("edit/{matricule}")
-public ResponseEntity<Employe> getEmployeByMatricule(@PathVariable("matricule") Long matricule)
+public ResponseEntity<Employe> getEmployeByMatricule(@PathVariable("matricule") Integer matricule)
 {	Employe E=this.servEmp.findEmployeByMatricule(matricule);
 	return new ResponseEntity<>(E,HttpStatus.OK);}
 
@@ -53,7 +56,7 @@ public ResponseEntity<Employe> addEmp(@RequestBody Employe ep)
 }
 @CrossOrigin(origins = "http://localhost:4200")
 @DeleteMapping("deleteEmp/{matricule}")
-public  ResponseEntity<Employe> deleteEmp(@PathVariable("matricule") Long matricule)
+public  ResponseEntity<Employe> deleteEmp(@PathVariable("matricule") Integer matricule)
 
 {	servEmp.deleteEmploye(matricule);
 return new ResponseEntity<>(HttpStatus.OK);

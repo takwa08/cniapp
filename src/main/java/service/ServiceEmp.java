@@ -29,13 +29,14 @@ public List<Employe>getAllEmploye()
 
 public Employe addEmp(Employe e)
 {
+//System.out.println(e.toString());
 	return this.EmpR.save(e);
 
 }
 
 
 
-public Employe findEmployeByMatricule(Long matricule) 
+public Employe findEmployeByMatricule(Integer matricule) 
 {
 	Optional<Employe> optional =this.EmpR.findEmployeByMatricule(matricule);
 	Employe employee = null;
@@ -49,7 +50,7 @@ public Employe findEmployeByMatricule(Long matricule)
 
 
 @Transactional
-public void deleteEmploye(Long matricule)
+public void deleteEmploye(Integer matricule)
 
 {
 	

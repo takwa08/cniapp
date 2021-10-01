@@ -24,11 +24,19 @@ this.GrpRepository=jr;
 
 public Group addGrp(Group p)
 {
-	if(p.getNomGroup()!=null) {
-return	this.GrpRepository.save(p);
+	List<Group> s=this.getAllGrp();
+for(int i=0;i<s.size();i++)
+{
+	if(s.get(i).getNomGroup().equalsIgnoreCase(p.getNomGroup()))
+	{
+		return null;
 	}
 	
-	else throw new RuntimeException();
+}
+return	this.GrpRepository.save(p);
+	//}
+	
+	//else throw new RuntimeException();
 	
 }
 

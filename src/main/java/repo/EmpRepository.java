@@ -17,9 +17,9 @@ import entity.Employe;
 public interface EmpRepository extends JpaRepository<Employe,Long> {
 	@Modifying
 	@Query(value="delete from Employe e where e.matricule=:matricule")
-	void deleteEmployeByMatricule(@Param("matricule") Long matricule);
-	Employe findByMatricule(Long mat);
+	void deleteEmployeByMatricule(@Param("matricule") Integer matricule);
+	Employe findByMatricule(Integer mat);
 	
-	Optional<Employe> findEmployeByMatricule(Long matricule);
+	Optional<Employe> findEmployeByMatricule(Integer matricule);
 
 }

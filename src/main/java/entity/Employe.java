@@ -4,8 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,10 +17,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 @Entity
+//@JsonDeserialize(using = GroupDeserlialize.class)
 public class Employe  implements Serializable {
 	 @Id
-	 private Long matricule;
+	 private Integer matricule;
+	// @GeneratedValue( generator = "myid")
+	// @GenericGenerator(name = "myid", strategy = "entity.MyGenerator")
+	
 
 	private String	nom;
 	
@@ -41,12 +57,12 @@ public class Employe  implements Serializable {
 
 	 private String  ville;
 	 @JoinColumn(name="idGrp")
-	 @ManyToOne
-	Group group;
+	 @ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)	
+	Group group=new Group();
 	 
 	 
 	
-	public Employe(Long matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
+	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
 			String description, String email, int codeP, int numTele, String adresse, String ville, Group group) {
 		super();
 		this.matricule = matricule;
@@ -63,22 +79,7 @@ public class Employe  implements Serializable {
 		this.ville = ville;
 	
 	}
-	public Employe(Long matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
-			String description, String email, int codeP, int numTele, String adresse, String ville) {
-		
-		this.matricule = matricule;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.nom_ar = nom_ar;
-		this.prenom_ar = prenom_ar;
-		this.age = age;
-		this.description = description;
-		this.email = email;
-		this.codeP = codeP;
-		this.numTele = numTele;
-		this.adresse = adresse;
-		this.ville = ville;
-	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -103,10 +104,10 @@ public class Employe  implements Serializable {
 	public void setPrenom_ar(String prenom_ar) {
 		this.prenom_ar = prenom_ar;
 	}
-	public Long getMatricule() {
+	public Integer getMatricule() {
 		return matricule;
 	}
-	public void setMatricule(Long matricule) {
+	public void setMatricule(Integer matricule) {
 		this.matricule = matricule;
 	}
 	public int getAge() {
