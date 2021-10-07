@@ -58,10 +58,32 @@ public class Employe  implements Serializable {
 	 private String  ville;
 	 @JoinColumn(name="idGrp")
 	 @ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)	
-	Group group=new Group();
+	private Group group=new Group();
 	 
-	 
+	 @JoinColumn(name="societe_id")
+	 @ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)	
+	 private Societe societe;
 	
+	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
+			String description, String email, int codeP, int numTele, String adresse, String ville, Group group,
+			Societe societe) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.nom_ar = nom_ar;
+		this.prenom_ar = prenom_ar;
+		this.age = age;
+		this.description = description;
+		this.email = email;
+		this.codeP = codeP;
+		this.numTele = numTele;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.group = group;
+		this.societe = societe;
+	}
+
 	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
 			String description, String email, int codeP, int numTele, String adresse, String ville, Group group) {
 		super();
@@ -163,11 +185,20 @@ public class Employe  implements Serializable {
 		this.group = group;
 	}
 	
+	public Societe getSociete() {
+		return societe;
+	}
+
+	public void setSociete(Societe societe) {
+		this.societe = societe;
+	}
+
 	@Override
 	public String toString() {
-		return "Employe [nom=" + nom + ", prenom=" + prenom + ", nom_ar=" + nom_ar + ", prenom_ar=" + prenom_ar
-				+ ", matricule=" + matricule + ", age=" + age + ", description=" + description + ", email=" + email
-				+ ", codeP=" + codeP + ", numTele=" + numTele + ", adresse=" + adresse + ", ville=" + ville + "]";
+		return "Employe [matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", nom_ar=" + nom_ar
+				+ ", prenom_ar=" + prenom_ar + ", age=" + age + ", description=" + description + ", email=" + email
+				+ ", codeP=" + codeP + ", numTele=" + numTele + ", adresse=" + adresse + ", ville=" + ville + ", group="
+				+ group + ", societe=" + societe + "]";
 	}
 	 
 

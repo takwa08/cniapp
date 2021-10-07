@@ -69,4 +69,9 @@ public ResponseEntity<Employe> updateEmp(@RequestBody Employe e)
 	return new ResponseEntity<>(p, HttpStatus.CREATED);
 }
 
+@CrossOrigin(origins = "http://localhost:4200")
+@GetMapping("findEmpSoc/{idl}")
+public ResponseEntity<List<Employe>> FindEmployeeSocietaire(@PathVariable("idl") String nomSociete)
+{	List<Employe> E=this.servEmp.findByIdS(nomSociete);
+	return new ResponseEntity<>(E,HttpStatus.OK);}
 }

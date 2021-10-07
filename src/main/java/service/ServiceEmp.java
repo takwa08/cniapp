@@ -63,8 +63,12 @@ public Employe updateEmploye(Employe ep)
 
 	return this.EmpR.save(ep);
 }
-
-
+@Transactional
+public List<Employe>findByIdS(String l)
+{
+	return this.EmpR.findByidSociete(l);
+	
+}
 
 
 }
