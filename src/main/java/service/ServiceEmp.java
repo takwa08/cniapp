@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import Exception.userNotfoundException;
 import entity.Employe;
 import entity.Group;
+import net.bytebuddy.implementation.bind.annotation.This;
 import repo.EmpRepository;
 
 @Service
@@ -62,15 +63,19 @@ public Employe updateEmploye(Employe ep)
 {
 
 	return this.EmpR.save(ep);
-}
+}/*
 @Transactional
 public List<Employe>findByIdS(String l)
 {
 	return this.EmpR.findByidSociete(l);
 	
+}*/
+
+public List<Employe> find(String n)
+{
+	return this.EmpR.find(n);
+	
 }
-
-
 }
 
 

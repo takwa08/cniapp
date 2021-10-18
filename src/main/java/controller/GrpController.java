@@ -36,12 +36,22 @@ public ResponseEntity<List<Group>>findAllGrp()
 	List <Group> p=this.ServiceGrp.getAllGrp();
 	return new ResponseEntity<>(p,HttpStatus.OK);
 }
+
+
+@CrossOrigin(origins = "http://localhost:4200")
+@PostMapping("add")
+public ResponseEntity<Group> add(@RequestBody Group ep)
+{
+	Group p=this.ServiceGrp.addGrp(ep);
+	return new ResponseEntity<Group>(p, HttpStatus.CREATED);
+}
+
 @CrossOrigin(origins = "http://localhost:4200")
 @PostMapping("addGrp")
 public ResponseEntity<Group> addEmp(@RequestBody Group ep)
 {
 	Group p=this.ServiceGrp.addGrp(ep);
-	return new ResponseEntity<>(p, HttpStatus.CREATED);
+	return new ResponseEntity<Group>(p, HttpStatus.CREATED);
 }
 @CrossOrigin(origins = "http://localhost:4200")
 @GetMapping("findByID/{id}")

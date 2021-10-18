@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.stereotype.Controller;
 import entity.Ministere;
+import entity.Structure;
 import service.ServiceMinistere;
 
 @Controller 
@@ -24,29 +25,44 @@ public class MinController {
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addStructure")
-	public ResponseEntity<Ministere>AddMini(@RequestBody Ministere min){
-		Ministere m=this.ServMin.saveMin(min);
-		return new ResponseEntity<Ministere>(m,HttpStatus.OK);
+	public ResponseEntity<Structure>AddMini(@RequestBody Structure min){
+		Structure m=this.ServMin.saveMin(min);
+		return new ResponseEntity<>(m,HttpStatus.OK);
 	}
 	@CrossOrigin(origins = "http://localhost:4200")	
 	@GetMapping("/Structure")
-	public  ResponseEntity<List<Ministere>>getAllMin()
+	public  ResponseEntity<List<Structure>>getAllMin()
 	{
-		List<Ministere> Minis= this.ServMin.getMin();
+		List<Structure> Minis= this.ServMin.getMin();
 		return new ResponseEntity<>(Minis,HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/editStructure")
-	public ResponseEntity<Ministere>EditMin(@RequestBody Ministere m)
+	public ResponseEntity<Structure>EditMin(@RequestBody Structure m)
 	{
-		Ministere min=this.ServMin.editMin(m);
-		return new ResponseEntity<Ministere>(min,HttpStatus.CREATED);
+		Structure min=this.ServMin.editMin(m);
+		return new ResponseEntity<>(min,HttpStatus.CREATED);
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/delete/{nomMin}")
-	public ResponseEntity<Ministere>DeleteMinistere(@PathVariable("nomMin") String m)
+	@DeleteMapping("/delete/{Structure_id}")
+	public ResponseEntity<Structure>DeleteMinistere(@PathVariable("Structure_id") Integer m)
 	{	this.ServMin.deleteMinis(m);
-		return new ResponseEntity<Ministere>(HttpStatus.OK);
+		return new ResponseEntity<Structure>(HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("findMin/{Structure_id}")
+	public ResponseEntity<Structure>FindMini(@PathVariable("Structure_id") Integer m)
+	{	Structure ministere =this.ServMin.findMinistere(m);
+		return new ResponseEntity<>(ministere,HttpStatus.CREATED);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("findP/{Structure_id}")
+	public ResponseEntity<Structure>FindParent(@PathVariable("Structure_id") Integer m)
+	{	Structure ministere =this.ServMin.findParent(m);
+		return new ResponseEntity<>(ministere,HttpStatus.CREATED);
+	}
+	
 }

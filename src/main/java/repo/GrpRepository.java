@@ -16,4 +16,6 @@ public interface GrpRepository extends JpaRepository<Group, Long> {
 	void deleteGroupByNomGroupe(@Param("NomGroup") String nomGroup);
 //	Employe findByidGrp(Long mat);
 	Optional<Group> findGroupByidGrp(Long id);
+	
+	
 }

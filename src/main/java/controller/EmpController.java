@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +71,8 @@ public ResponseEntity<Employe> updateEmp(@RequestBody Employe e)
 }
 
 @CrossOrigin(origins = "http://localhost:4200")
-@GetMapping("findEmpSoc/{idl}")
-public ResponseEntity<List<Employe>> FindEmployeeSocietaire(@PathVariable("idl") String nomSociete)
-{	List<Employe> E=this.servEmp.findByIdS(nomSociete);
+@GetMapping("filtrer/{idl}")
+public ResponseEntity<List<Employe>> FindEmployees(@PathVariable("idl") String nomSociete)
+{	List<Employe> E=this.servEmp.find(nomSociete);
 	return new ResponseEntity<>(E,HttpStatus.OK);}
 }

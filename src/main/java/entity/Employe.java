@@ -32,76 +32,26 @@ public class Employe  implements Serializable {
 	 private Integer matricule;
 	// @GeneratedValue( generator = "myid")
 	// @GenericGenerator(name = "myid", strategy = "entity.MyGenerator")
-	
-
-	private String	nom;
-	
-	private String   prenom ;
-
+	 private String	nom;	
+	 private String   prenom ;
 	 private String  nom_ar;
-	
-	 private String prenom_ar;
-
-	 
+	 private String prenom_ar;	 
 	 private int age;
-	
 	 private String description;
-
 	 private String email;
-
 	 private int codeP;
-
 	 private int numTele;
-
 	 private String adresse;
-
 	 private String  ville;
-	 @JoinColumn(name="idGrp")
+	 @JoinColumn(name="Structure_id")
 	 @ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)	
-	private Group group=new Group();
-	 
-	 @JoinColumn(name="societe_id")
-	 @ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)	
-	 private Societe societe;
-	
-	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
-			String description, String email, int codeP, int numTele, String adresse, String ville, Group group,
-			Societe societe) {
-		super();
-		this.matricule = matricule;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.nom_ar = nom_ar;
-		this.prenom_ar = prenom_ar;
-		this.age = age;
-		this.description = description;
-		this.email = email;
-		this.codeP = codeP;
-		this.numTele = numTele;
-		this.adresse = adresse;
-		this.ville = ville;
-		this.group = group;
-		this.societe = societe;
+	 private Structure struct;
+	public Integer getMatricule() {
+		return matricule;
 	}
-
-	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
-			String description, String email, int codeP, int numTele, String adresse, String ville, Group group) {
-		super();
+	public void setMatricule(Integer matricule) {
 		this.matricule = matricule;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.nom_ar = nom_ar;
-		this.prenom_ar = prenom_ar;
-		this.age = age;
-		this.description = description;
-		this.email = email;
-		this.codeP = codeP;
-		this.numTele = numTele;
-		this.adresse = adresse;
-		this.ville = ville;
-	
 	}
-
 	public String getNom() {
 		return nom;
 	}
@@ -125,12 +75,6 @@ public class Employe  implements Serializable {
 	}
 	public void setPrenom_ar(String prenom_ar) {
 		this.prenom_ar = prenom_ar;
-	}
-	public Integer getMatricule() {
-		return matricule;
-	}
-	public void setMatricule(Integer matricule) {
-		this.matricule = matricule;
 	}
 	public int getAge() {
 		return age;
@@ -174,32 +118,40 @@ public class Employe  implements Serializable {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public Employe() {
-		
+	public Structure getStruct() {
+		return struct;
 	}
-	
-	public Group getGroup() {
-		return group;
+	public void setStruct(Structure struct) {
+		this.struct = struct;
 	}
-	public void setGroup(Group group) {
-		this.group = group;
+	public Employe(Integer matricule, String nom, String prenom, String nom_ar, String prenom_ar, int age,
+			String description, String email, int codeP, int numTele, String adresse, String ville, Structure struct) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.nom_ar = nom_ar;
+		this.prenom_ar = prenom_ar;
+		this.age = age;
+		this.description = description;
+		this.email = email;
+		this.codeP = codeP;
+		this.numTele = numTele;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.struct = struct;
 	}
-	
-	public Societe getSociete() {
-		return societe;
-	}
-
-	public void setSociete(Societe societe) {
-		this.societe = societe;
-	}
-
 	@Override
 	public String toString() {
 		return "Employe [matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", nom_ar=" + nom_ar
 				+ ", prenom_ar=" + prenom_ar + ", age=" + age + ", description=" + description + ", email=" + email
-				+ ", codeP=" + codeP + ", numTele=" + numTele + ", adresse=" + adresse + ", ville=" + ville + ", group="
-				+ group + ", societe=" + societe + "]";
+				+ ", codeP=" + codeP + ", numTele=" + numTele + ", adresse=" + adresse + ", ville=" + ville
+				+ ", struct=" + struct + "]";
 	}
-	 
+	public Employe() {
+		super();
+	}
 
+	
+	
 }

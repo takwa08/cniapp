@@ -40,6 +40,18 @@ return	this.GrpRepository.save(p);
 	
 }
 
+
+
+public Group save(Group p)
+{
+
+return	this.GrpRepository.save(p);
+	//}
+	
+	//else throw new RuntimeException();
+	
+}
+
 public List<Group> getAllGrp(){
 return this.GrpRepository.findAll();}
 
