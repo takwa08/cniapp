@@ -2,7 +2,7 @@ package entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,10 +18,10 @@ public class Group_Emp {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long idAffect;
 
-@ManyToOne(cascade=CascadeType.ALL)
+@ManyToOne 	(cascade = {CascadeType.REMOVE})
 private Employe employees;
-
-@ManyToOne(cascade=CascadeType.ALL)
+//(cascade=CascadeType.ALL)
+@ManyToOne	
 private Group group;
 public Long getIdAffect() {
 	return idAffect;

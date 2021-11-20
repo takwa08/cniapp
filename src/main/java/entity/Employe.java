@@ -45,7 +45,7 @@ public class Employe  implements Serializable {
 	 private String  ville;
 	 @JoinColumn(name="Structure_id")
 	 //(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
-	 @ManyToOne	
+	 @ManyToOne
 	 private Structure struct;
 	public Integer getMatricule() {
 		return matricule;

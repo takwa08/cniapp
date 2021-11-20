@@ -35,6 +35,13 @@ public class serviceGroup_Emp {
 	
 	public List<Group_Emp> getAllemp(Long id){
 		return this.group_EmpRepository.getAllemployees(id);}
+	
+	public void deleteEmpFromGroupe(Integer id)
+	{
+		this.group_EmpRepository.deleteEmpfromGrp(id);;
+	}
+	
+	
 
 	
 	
