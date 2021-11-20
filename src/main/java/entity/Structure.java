@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,7 +38,7 @@ public class Structure {
 	}
 
 
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.REFRESH, CascadeType.REMOVE})
 	@JoinColumn(name="parent_Id")
 	private Structure parentStruct;
 	public Integer getStructure_id() {
