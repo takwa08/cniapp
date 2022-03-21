@@ -22,7 +22,7 @@ public class AuthController {
 		this.ServiceAd=ServiceAd;
 		
 	}
-    @PostMapping("/login")
+    @PostMapping("/loginiiiiiii")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Admin> loginUser(@RequestBody Admin pa) {
         String adminname = pa.getUsername();
@@ -41,7 +41,7 @@ public class AuthController {
        
     }
     
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http:/localhost:4200")
     @PostMapping("adminAdd")
     public ResponseEntity<Admin> addEmp(@RequestBody Admin ep)
     {
